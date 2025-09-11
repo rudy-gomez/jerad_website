@@ -22,24 +22,3 @@ window.addEventListener('scroll', function() {
         header.classList.remove('scrolled');
     }
 });
-
-//
-function toggleFAQ(element) {
-    const faqItem = element.closest('.faq-item');
-    const answer = faqItem.querySelector('.faq-answer');
-    
-    // Toggle active class
-    faqItem.classList.toggle('active');
-    
-    // Toggle answer visibility
-    answer.classList.toggle('show');
-    
-    // Close other open FAQs
-    const allFaqItems = document.querySelectorAll('.faq-item');
-    allFaqItems.forEach(item => {
-        if (item !== faqItem) {
-            item.classList.remove('active');
-            item.querySelector('.faq-answer').classList.remove('show');
-        }
-    });
-}
