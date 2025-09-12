@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+/*=======================
+    contact section styles
+=========================*/
+.contact-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 50px;
+    background-image: url('../assets/global-connect-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.contact-content {
+    background: rgba(15, 23, 42, 0.85); 
+    margin-top: 100px;
+    padding: 3rem 2.5rem;
+    border-radius: 1.5rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    color: #f1f5f9; 
+}
+
+.contact-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.contact-description {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #cbd5e1;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.required {
+    display: grid;
+    grid-template-columns: 2fr 2fr; 
+    gap: 20px;
+}
+.contact-form label {
+    font-size: 0.95rem;
+    color: #e2e8f0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.6); 
+}
+
+.submit-button {
+    padding: 0.9rem;
+    border: none;
+    border-radius: 0.8rem;
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.5);
+}
