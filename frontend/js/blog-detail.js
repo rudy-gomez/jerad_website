@@ -1,32 +1,3 @@
-// HTML injection of header and footer
-fetch('components/header.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Error al cargar header:', err));
-
-fetch('components/footer.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Error al cargar footer:', err));
-
-//Header scroll effect
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    const logoImg = document.querySelector('.logo img'); 
-    
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-        logoImg.src = 'assets/jerad-logo-dark.png'; 
-    } else {
-        header.classList.remove('scrolled');
-        logoImg.src = 'assets/jerad_logo.png';
-    }
-});
-
 // Functions to load dynamic content from the backend
 function setBlogHeroImage(imageUrl) {
     const heroSection = document.getElementById('blog-hero');
