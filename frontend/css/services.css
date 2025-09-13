@@ -1,0 +1,576 @@
+/* ========================================
+   GLOBAL RESET
+   ======================================== */
+/* Reset margins, paddings, and apply border-box for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   BODY STYLES
+   ======================================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    /* A semi-transparent gradient overlay is applied OVER the background image 
+       to improve text readability and contrast */
+    background: linear-gradient(rgba(12, 20, 40, 0.75), rgba(12, 20, 40, 0.75)), 
+                url('../assets/backgroun.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #0c1428; /* Fallback color in case image fails */
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 50px;
+    background-image: url('../assets/background_home.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+.hero-content {
+    color: #dedddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left;
+    max-width: 700px;
+}
+
+.hero-text h1 {
+    font-size: 93px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 110px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    opacity: 0.9;
+}
+
+.hero-cta {
+    flex-shrink: 0;
+    align-self: center;
+}
+
+
+/* ========================================
+   CALL TO ACTION (HERO)
+   ======================================== */
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.cta-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.arrow {
+    margin-left: 10px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.cta-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+
+/* ========================================
+   SERVICES MAIN CONTAINER
+   ======================================== */
+.service-main {
+    padding-top: 80px;
+}
+
+
+/* ========================================
+   SERVICES SECTION
+   ======================================== */
+.service-section {
+    min-height: 100vh; /* Takes full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 5%;
+    position: relative;
+}
+
+.service-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    gap: 3rem;
+}
+
+
+/* ========================================
+   SERVICE TEXT
+   ======================================== */
+.service-text {
+    flex: 1;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.service-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+/* Decorative bottom line under title */
+.service-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #00d4ff, #0099cc);
+    border-radius: 2px;
+}
+
+.service-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #e0e6ed;
+}
+
+
+/* ========================================
+   CALL TO ACTION (SERVICE)
+   ======================================== */
+.cta-button {
+    background: linear-gradient(45deg, #2c3e50, #4a6741);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #00d4ff, #0099cc);
+    transition: all 0.6s ease;
+    z-index: -1;
+    border-radius: 30px;
+}
+
+.cta-button:hover {
+    border-color: #00d4ff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+}
+
+.cta-button:hover::before {
+    left: 0;
+}
+
+
+/* ========================================
+   3D IMAGE CAROUSEL
+   ======================================== */
+.service-images {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+    perspective: 1200px; /* Adds depth for 3D transforms */
+}
+
+.images-carousel {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d; /* Enables 3D transformations */
+}
+
+
+/* ========================================
+   IMAGE CARDS
+   ======================================== */
+.image-card {
+    position: absolute;
+    width: 300px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire card */
+    transition: transform 0.5s ease;
+}
+
+
+/* ========================================
+   CAROUSEL POSITIONS
+   ======================================== */
+.image-card[data-index="0"] {
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.85) rotateY(25deg);
+    z-index: 2;
+    opacity: 0.7;
+    filter: brightness(0.8);
+}
+
+.image-card[data-index="1"] {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+    z-index: 3;
+    opacity: 1;
+    border: 3px solid #00d4ff;
+    box-shadow: 0 20px 40px rgba(0, 212, 255, 0.4);
+    filter: brightness(1);
+}
+
+.image-card[data-index="2"] {
+    left: 75%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.85) rotateY(-25deg);
+    z-index: 2;
+    opacity: 0.7;
+    filter: brightness(0.8);
+}
+
+.image-card[data-index="3"] {
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.7) rotateY(-45deg);
+    z-index: 1;
+    opacity: 0.3;
+    filter: brightness(0.6);
+}
+
+.image-card[data-index="4"] {
+    left: 0%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.7) rotateY(45deg);
+    z-index: 1;
+    opacity: 0.3;
+    filter: brightness(0.6);
+}
+
+
+/* ========================================
+   CARD CAPTIONS
+   ======================================== */
+.card-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 20px 15px 10px;
+    transform: translateY(100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.image-card:hover .card-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.card-caption h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.card-caption p {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+
+/* ========================================
+   CENTER IMAGE HOVER EFFECT
+   ======================================== */
+.image-card[data-index="1"]:hover {
+    transform: translate(-50%, -50%) scale(1.05) rotateY(0deg);
+    box-shadow: 0 25px 50px rgba(0, 212, 255, 0.5);
+}
+
+.image-card[data-index="1"]:hover img {
+    transform: scale(1.1);
+}
+
+
+/* ========================================
+   NAVIGATION BUTTON
+   ======================================== */
+.carousel-next {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #2c3e50, #4a6741);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 50%;
+    color: #00d4ff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-next:hover {
+    background: linear-gradient(45deg, #00d4ff, #0099cc);
+    color: #ffffff;
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 212, 255, 0.4);
+    border-color: #00d4ff;
+}
+
+.carousel-next:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+
+/* ========================================
+   CAROUSEL INDICATORS
+   ======================================== */
+.carousel-indicators {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: #00d4ff;
+    transform: scale(1.2);
+}
+
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes carouselMove {
+    0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.image-card.moving {
+    animation: carouselMove 0.8s ease forwards;
+}
+
+.service-title {
+    animation: titleGlow 3s infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+    }
+}
+
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 768px) {
+    .service-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .service-title {
+        font-size: 2rem;
+    }
+    
+    .service-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .images-carousel {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .image-card {
+        width: 200px;
+        height: 250px;
+    }
+    
+    .image-card[data-index="0"] {
+        left: 20%;
+        transform: translate(-50%, -50%) scale(0.8) rotateY(25deg);
+    }
+    
+    .image-card[data-index="1"] {
+        transform: translate(-50%, -50%) scale(0.9) rotateY(0deg);
+    }
+    
+    .image-card[data-index="2"] {
+        left: 80%;
+        transform: translate(-50%, -50%) scale(0.8) rotateY(-25deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .service-section {
+        padding: 2rem;
+    }
+    
+    .service-title {
+        font-size: 1.8rem;
+    }
+    
+    .images-carousel {
+        height: 250px;
+    }
+    
+    .image-card {
+        width: 160px;
+        height: 200px;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+    }
+    
+    .carousel-next {
+        width: 45px;
+        height: 45px;
+        bottom: -50px;
+    }
+    
+    .carousel-indicators {
+        bottom: -70px;
+    }
+}
