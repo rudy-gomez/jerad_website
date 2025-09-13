@@ -17,7 +17,7 @@ body {
 .hero-blogs {
     min-height: 100vh;
     background: linear-gradient(135deg, #0a1117 0%, #1a2332 100%);
-    background-image: url('../assets/hero-blogs-bg.png');
+    background-image    : url('../assets/hero-blogs-bg.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;

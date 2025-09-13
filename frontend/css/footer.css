@@ -35,10 +35,17 @@ footer {
     right: 0;
     bottom: 0;
     background: linear-gradient(
-        rgba(0, 0, 0, 0.),   
-        rgba(0, 0, 0, 0.3) 
+        rgba(0, 0, 0, 0.4),   
+        rgba(0, 0, 0, 0.6) 
     );
     z-index: -1; 
+}
+
+.team-page footer{
+    background-image: url('../assets/about-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 footer::before {
@@ -53,7 +60,7 @@ footer::before {
     width: 0;
     background: linear-gradient(90deg, transparent, #00d4ff, transparent);
     transform: translateX(-50%);
-    transition: width 3s ease-out;
+    transition: width 3.5s ease-out;
 }
 
 .footer-animated-line.animate {
