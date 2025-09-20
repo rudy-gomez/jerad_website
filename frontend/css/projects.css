@@ -1,0 +1,1014 @@
+/* ========================================
+    CUSTOM PROPERTIES 
+   ======================================== */
+/*
+  Defines the global design tokens for colors, shadows, gradients, and transitions.
+ 
+*/
+:root {
+    --primary-color: #4361ee;
+    --primary-dark: #3a56d4;
+    --secondary-color: #7209b7;
+    --accent-color: #f72585;
+    --light-bg: #f8f9fa;
+    --dark-bg: #0f172a;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --white: #ffffff;
+    --border-color: #e2e8f0;
+    --gradient: linear-gradient(135deg, #4361ee, #7209b7);
+    --gradient-2: linear-gradient(135deg, #f72585, #7209b7);
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 5px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ========================================
+   GLOBAL RESET 
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========================================
+   BASE & LAYOUT STYLES 
+   ======================================== */
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    background-image: url('../assets/background_projectshome.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/*
+ Creates a fixed, dark semi-transparent overlay to improve text contrast over the background image.
+*/
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.7);
+    z-index: -2;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS 
+   ======================================== */
+@keyframes fadeIn { /* Fades an element in.  */
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp { 
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes float { /*  Creates a subtle floating effect. */
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse { 
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes typewriter { /*  Simulates a typewriter effect by increasing width. */
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink { 
+    from, to { border-color: transparent; }
+    50% { border-color: var(--white); }
+}
+
+/* ========================================
+   SECTION 1: PROJECTS LIST 
+   ======================================== */
+.projects-section {
+    padding: 6rem 0;
+    animation: fadeIn 1s ease;
+}
+
+
+.hero-content {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+
+.typing-animation {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #ffffff, #bbbbbb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-right: 3px solid var(--white);
+    white-space: nowrap;
+    animation: typewriter 2s steps(20) 1s 1 normal both, blink 0.8s steps(20) infinite;
+    max-width: 100%;
+}
+
+
+.stats {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stats .number {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+}
+
+.stats .text {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slide-in {
+    animation: slideInUp 0.8s ease;
+}
+
+/*
+ * Base styles for select dropdowns and the search box.
+ */
+select, .search-box {
+    padding: 1rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+select:focus, .search-box:focus-within {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    transform: translateY(-2px);
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    padding: 0.5rem 0;
+    margin-right: 0.5rem;
+    width: 100%;
+    background: transparent;
+}
+
+.search-box i {
+    color: var(--text-light);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    will-change: transform, box-shadow;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-out;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+/*
+ *  Overlay that appears on hover over the project image.
+ */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, transparent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100%);
+    transition: transform 0.4s ease-out;
+}
+
+.project-card:hover .overlay {
+    transform: translateY(0);
+}
+
+.view-more {
+    color: var(--white);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--white);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-out 0.2s, transform 0.3s ease-out 0.2s;
+}
+
+.project-card:hover .view-more {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-info {
+    padding: 2rem;
+}
+
+.project-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-bg);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-info h3 {
+    color: var(--primary-color);
+}
+
+.project-info p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: var(--light-bg);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.tag:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/*
+ *  Styles for the loading spinner.
+ */
+.loading-spinner {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--white);
+    padding: 2rem;
+}
+
+/* ========================================
+   SECTION 2: PROJECT DETAILS 
+   ======================================== */
+.project-detail-section {
+    display: block;
+}
+
+.project-detail-section.hidden {
+    display: none;
+}
+
+.project-hero {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--white);
+    padding: 2rem;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.project-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 10%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+    z-index: 1;
+}
+
+/*
+ * Button to navigate back to the projects list.
+*/
+.back-button {
+    position: absolute;
+    top: 120px;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 2;
+    transition: background-color 0.3s ease;
+}
+.back-button span {
+    transition: transform 0.3s ease-out;
+}
+.back-button i {
+    transition: transform 0.3s ease-out;
+}
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+.back-button:hover i {
+    transform: translateX(-4px);
+}
+
+.project-hero .hero-content {
+    text-align: left;
+    max-width: 900px;
+    margin: 0;
+    padding: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.project-hero .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    animation: slideInUp 1s ease;
+}
+
+.project-hero .hero-content p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    animation: slideInUp 1.2s ease;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    max-width: 650px;
+}
+
+/* ========================================
+   SECTION 3: PROJECT DESCRIPTION 
+   ======================================== */
+.project-description {
+    padding: 6rem 0;
+    background: rgba(255, 255, 255, 0.98);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--dark-bg);
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--gradient);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.8rem;
+    margin: 3rem 0 2rem;
+    color: var(--dark-bg);
+    text-align: center;
+}
+
+.project-description p {
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.project-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin: 5rem 0;
+}
+
+.feature {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    background: var(--white);
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.feature:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.feature:hover .feature-icon {
+    transform: rotateY(180deg);
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-bg);
+}
+
+.feature p {
+    color: var(--text-light);
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.process-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.gallery-item {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: var(--shadow-hover);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(67, 97, 238, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay i {
+    color: var(--white);
+    font-size: 2rem;
+}
+
+/* ========================================
+   SECTION 4: CHALLENGES & SOLUTIONS 
+   ======================================== */
+.challenges-section {
+    padding: 6rem 0;
+    background: rgba(248, 249, 250, 0.95);
+    position: relative;
+    overflow: hidden;
+}
+
+.challenges-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-bottom: 5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.challenge-box, .solution-box {
+    padding: 3rem;
+    border-radius: 20px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.challenge-box:hover, .solution-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.box-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.box-header i {
+    font-size: 2rem;
+}
+
+.challenge-box .box-header i {
+    color: var(--accent-color);
+}
+
+.solution-box .box-header i {
+    color: var(--primary-color);
+}
+
+.box-header h3 {
+    font-size: 1.5rem;
+    color: var(--dark-bg);
+}
+
+.challenge-box ul, .solution-box ul {
+    list-style: none;
+    color: var(--text-dark);
+}
+
+.challenge-box li, .solution-box li {
+    margin-bottom: 1rem;
+    padding-left: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.challenge-box li i {
+    color: var(--accent-color);
+}
+
+.solution-box li i {
+    color: var(--primary-color);
+}
+
+/*
+ *  Grid layout for displaying project results or outcomes.
+ */
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.result-item {
+    text-align: center;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.result-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.result-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--gradient);
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    position: relative;
+}
+
+.result-circle::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    opacity: 0.3;
+    animation: pulse 2s infinite;
+}
+
+.result-text {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* ========================================
+   FINAL GALLERY 
+   ======================================== */
+.final-gallery {
+    margin: 5rem 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.gallery-final-item {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.gallery-final-item:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: var(--shadow-hover);
+}
+
+.gallery-final-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery-final-item p {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ========================================
+   TESTIMONIALS 
+   ======================================== */
+.testimonials {
+    margin: 5rem 0;
+}
+
+.testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.testimonial::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 5rem;
+    color: var(--primary-color);
+    opacity: 0.1;
+    font-family: serif;
+}
+
+.testimonial-content {
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-content p {
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.testimonial-author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    color: var(--dark-bg);
+    margin-bottom: 0.25rem;
+}
+
+.author-info p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   CALL TO ACTION (CTA) SECTION 
+   ======================================== */
+.cta-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: var(--gradient);
+    padding: 4rem;
+    border-radius: 20px;
+    margin: 5rem 0;
+    color: var(--white);
+}
+
+.cta-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-image {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-hover);
+}
+
+.cta-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.cta-image:hover img {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN 
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .typing-animation {
+        font-size: 2.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .cta-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+/*
+ *  Styles for mobile devices in landscape and larger phones.
+*/
+@media (max-width: 768px) {
+    .typing-animation {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .project-hero .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-hero {
+        padding: 6rem 1rem;
+    }
+
+    .challenges-container {
+        grid-template-columns: 1fr;
+    }
+
+    .project-features {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonials-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*
+ *  Styles for mobile devices in portrait.
+*/
+@media (max-width: 480px) {
+    .typing-animation {
+        font-size: 1.4rem;
+    }
+
+    .stats .number {
+        font-size: 3rem;
+    }
+
+    .project-hero .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .project-hero .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .feature {
+        padding: 2rem 1rem;
+    }
+
+    .cta-section {
+        padding: 2rem;
+    }
+}
