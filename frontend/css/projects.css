@@ -3,7 +3,6 @@
    ======================================== */
 /*
   Defines the global design tokens for colors, shadows, gradients, and transitions.
- 
 */
 :root {
     --primary-color: #4361ee;
@@ -17,16 +16,14 @@
     --white: #ffffff;
     --border-color: #e2e8f0;
     --gradient: linear-gradient(135deg, #4361ee, #7209b7);
-    --gradient-2: linear-gradient(135deg, #f72585, #7209b7);
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 5px 10px -5px rgba(0, 0, 0, 0.04);
     --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
     --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* ========================================
-   GLOBAL RESET 
+    GLOBAL RESET 
    ======================================== */
-
 * {
     margin: 0;
     padding: 0;
@@ -34,9 +31,8 @@
 }
 
 /* ========================================
-   BASE & LAYOUT STYLES 
+    BASE & LAYOUT STYLES 
    ======================================== */
-
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -49,7 +45,7 @@ body {
 }
 
 /*
- Creates a fixed, dark semi-transparent overlay to improve text contrast over the background image.
+  Creates a fixed, dark semi-transparent overlay to improve text contrast over the background image.
 */
 body::before {
     content: '';
@@ -62,7 +58,6 @@ body::before {
     z-index: -2;
 }
 
-
 .container {
     width: 100%;
     max-width: 1200px;
@@ -71,60 +66,52 @@ body::before {
 }
 
 /* ========================================
-   KEYFRAME ANIMATIONS 
+    KEYFRAME ANIMATIONS 
    ======================================== */
-@keyframes fadeIn { /* Fades an element in.  */
+@keyframes fadeIn { /* Fades an element in. */
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-@keyframes slideInUp { 
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+@keyframes slideInUp { /* Slides an element up and fades it in. */
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes float { /*  Creates a subtle floating effect. */
+@keyframes float { /* Creates a subtle floating effect. */
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
 
-@keyframes pulse { 
+@keyframes pulse { /* Creates a subtle pulsing effect. */
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
-@keyframes typewriter { /*  Simulates a typewriter effect by increasing width. */
+@keyframes typewriter { /* Simulates a typewriter effect by increasing width. */
     from { width: 0; }
     to { width: 100%; }
 }
 
-@keyframes blink { 
+@keyframes blink { /* Simulates the blinking cursor of a typewriter. */
     from, to { border-color: transparent; }
     50% { border-color: var(--white); }
 }
 
 /* ========================================
-   SECTION 1: PROJECTS LIST 
+    SECTION 1: PROJECTS LIST 
    ======================================== */
 .projects-section {
     padding: 6rem 0;
     animation: fadeIn 1s ease;
 }
 
-
 .hero-content {
     text-align: center;
     margin-bottom: 4rem;
 }
-
 
 .typing-animation {
     font-size: 3rem;
@@ -142,7 +129,6 @@ body::before {
     animation: typewriter 2s steps(20) 1s 1 normal both, blink 0.8s steps(20) infinite;
     max-width: 100%;
 }
-
 
 .stats {
     display: inline-flex;
@@ -169,11 +155,9 @@ body::before {
     font-weight: 500;
 }
 
-
 .floating {
     animation: float 3s ease-in-out infinite;
 }
-
 
 .filters {
     display: flex;
@@ -194,9 +178,7 @@ body::before {
     animation: slideInUp 0.8s ease;
 }
 
-/*
- * Base styles for select dropdowns and the search box.
- */
+/* Base styles for select dropdowns and the search box. */
 select, .search-box {
     padding: 1rem 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -240,7 +222,7 @@ select:focus, .search-box:focus-within {
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.813); 
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -273,9 +255,7 @@ select:focus, .search-box:focus-within {
     transform: scale(1.1);
 }
 
-/*
- *  Overlay that appears on hover over the project image.
- */
+/* Overlay that appears on hover over the project image. */
 .overlay {
     position: absolute;
     top: 0;
@@ -356,9 +336,7 @@ select:focus, .search-box:focus-within {
     transform: translateY(-2px);
 }
 
-/*
- *  Styles for the loading spinner.
- */
+/* Styles for the loading spinner. */
 .loading-spinner {
     text-align: center;
     font-size: 1.2rem;
@@ -367,7 +345,7 @@ select:focus, .search-box:focus-within {
 }
 
 /* ========================================
-   SECTION 2: PROJECT DETAILS 
+    SECTION 2: PROJECT DETAILS 
    ======================================== */
 .project-detail-section {
     display: block;
@@ -403,9 +381,7 @@ select:focus, .search-box:focus-within {
     z-index: 1;
 }
 
-/*
- * Button to navigate back to the projects list.
-*/
+/* Button to navigate back to the projects list. */
 .back-button {
     position: absolute;
     top: 120px;
@@ -423,9 +399,7 @@ select:focus, .search-box:focus-within {
     z-index: 2;
     transition: background-color 0.3s ease;
 }
-.back-button span {
-    transition: transform 0.3s ease-out;
-}
+.back-button span,
 .back-button i {
     transition: transform 0.3s ease-out;
 }
@@ -462,7 +436,7 @@ select:focus, .search-box:focus-within {
 }
 
 /* ========================================
-   SECTION 3: PROJECT DESCRIPTION 
+    SECTION 3: PROJECT DESCRIPTION 
    ======================================== */
 .project-description {
     padding: 6rem 0;
@@ -507,7 +481,6 @@ select:focus, .search-box:focus-within {
     margin-left: auto;
     margin-right: auto;
 }
-
 
 .project-features {
     display: grid;
@@ -616,11 +589,11 @@ select:focus, .search-box:focus-within {
 }
 
 /* ========================================
-   SECTION 4: CHALLENGES & SOLUTIONS 
+    SECTION 4: CHALLENGES & SOLUTIONS 
    ======================================== */
 .challenges-section {
     padding: 6rem 0;
-    background: rgba(248, 249, 250, 0.95);
+    background: var(--light-bg);
     position: relative;
     overflow: hidden;
 }
@@ -658,13 +631,8 @@ select:focus, .search-box:focus-within {
     font-size: 2rem;
 }
 
-.challenge-box .box-header i {
-    color: var(--accent-color);
-}
-
-.solution-box .box-header i {
-    color: var(--primary-color);
-}
+.challenge-box .box-header i { color: var(--accent-color); }
+.solution-box .box-header i { color: var(--primary-color); }
 
 .box-header h3 {
     font-size: 1.5rem;
@@ -673,6 +641,7 @@ select:focus, .search-box:focus-within {
 
 .challenge-box ul, .solution-box ul {
     list-style: none;
+    padding: 0;
     color: var(--text-dark);
 }
 
@@ -684,17 +653,10 @@ select:focus, .search-box:focus-within {
     gap: 0.75rem;
 }
 
-.challenge-box li i {
-    color: var(--accent-color);
-}
+.challenge-box li i { color: var(--accent-color); }
+.solution-box li i { color: var(--primary-color); }
 
-.solution-box li i {
-    color: var(--primary-color);
-}
-
-/*
- *  Grid layout for displaying project results or outcomes.
- */
+/* Grid layout for displaying project results or outcomes. */
 .results-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -751,9 +713,9 @@ select:focus, .search-box:focus-within {
 }
 
 /* ========================================
-   FINAL GALLERY 
+    FINAL GALLERY & TESTIMONIALS
    ======================================== */
-.final-gallery {
+.final-gallery, .testimonials {
     margin: 5rem 0;
 }
 
@@ -789,20 +751,6 @@ select:focus, .search-box:focus-within {
     color: var(--text-dark);
     font-weight: 500;
     margin: 0;
-}
-
-/* ========================================
-   TESTIMONIALS 
-   ======================================== */
-.testimonials {
-    margin: 5rem 0;
-}
-
-.testimonials-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
 }
 
 .testimonial {
@@ -866,7 +814,7 @@ select:focus, .search-box:focus-within {
 }
 
 /* ========================================
-   CALL TO ACTION (CTA) SECTION 
+    CALL TO ACTION (CTA) SECTION 
    ======================================== */
 .cta-section {
     display: grid;
@@ -927,88 +875,28 @@ select:focus, .search-box:focus-within {
 }
 
 /* ========================================
-   RESPONSIVE DESIGN 
+    RESPONSIVE DESIGN 
    ======================================== */
-
 @media (max-width: 1024px) {
-    .typing-animation {
-        font-size: 2.5rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-
-    .cta-section {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+    .typing-animation { font-size: 2.5rem; }
+    .projects-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+    .cta-section { grid-template-columns: 1fr; text-align: center; }
 }
 
-/*
- *  Styles for mobile devices in landscape and larger phones.
-*/
 @media (max-width: 768px) {
-    .typing-animation {
-        font-size: 1.8rem;
-        line-height: 1.2;
-    }
-
-    .project-hero .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .filters {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .project-hero {
-        padding: 6rem 1rem;
-    }
-
-    .challenges-container {
-        grid-template-columns: 1fr;
-    }
-
-    .project-features {
-        grid-template-columns: 1fr;
-    }
-
-    .testimonials-container {
-        grid-template-columns: 1fr;
-    }
+    .typing-animation { font-size: 1.8rem; line-height: 1.2; }
+    .project-hero .hero-content h1 { font-size: 2.5rem; }
+    .filters { flex-direction: column; align-items: stretch; }
+    .projects-grid, .challenges-container, .project-features { grid-template-columns: 1fr; }
+    .project-hero { padding: 8rem 1rem 4rem; }
+    .back-button { top: 80px; left: 1rem; }
 }
 
-/*
- *  Styles for mobile devices in portrait.
-*/
 @media (max-width: 480px) {
-    .typing-animation {
-        font-size: 1.4rem;
-    }
-
-    .stats .number {
-        font-size: 3rem;
-    }
-
-    .project-hero .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .project-hero .hero-content p {
-        font-size: 1.2rem;
-    }
-
-    .feature {
-        padding: 2rem 1rem;
-    }
-
-    .cta-section {
-        padding: 2rem;
-    }
+    .typing-animation { font-size: 1.4rem; }
+    .stats .number { font-size: 3rem; }
+    .project-hero .hero-content h1 { font-size: 2rem; }
+    .project-hero .hero-content p { font-size: 1.2rem; }
+    .feature { padding: 2rem 1rem; }
+    .cta-section { padding: 2.5rem; }
 }

@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyectos - JERAD</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/projects.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/projects.css">
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -28,23 +29,18 @@
                 <div class="filters slide-in">
                     <select id="industry-filter">
                         <option value="">Industria</option>
-                        <option value="tech">Tecnología</option>
-                        <option value="edu">Educación</option>
-                        <option value="health">Salud</option>
+                        <option value="tecnologia">Tecnología</option>
+                        <option value="educacion">Educación</option>
+                        <option value="salud">Salud</option>
+                        <option value="industria">Industria</option>
+                        <option value="finanzas">Finanzas</option>
                     </select>
 
                     <select id="tech-filter">
                         <option value="">Tecnología</option>
                         <option value="web">Web</option>
                         <option value="mobile">Mobile</option>
-                        <option value="ai">Inteligencia Artificial</option>
-                    </select>
-
-                    <select id="size-filter">
-                        <option value="">Tamaño</option>
-                        <option value="small">Pequeño</option>
-                        <option value="medium">Mediano</option>
-                        <option value="large">Grande</option>
+                        <option value="iot">IoT</option>
                     </select>
 
                     <select id="year-filter">
@@ -67,7 +63,7 @@
                 <div class="projects-grid">
                     <div class="project-card" data-project="unilab" role="button" aria-label="Ver detalles del proyecto UniLab">
                         <div class="project-image">
-                            <img src="assets/background_projectshome.jpg" alt="UniLab Project">
+                            <img src="assets/background_projects1.jpg" alt="UniLab Project">
                             <div class="overlay">
                                 <span class="view-more">Ver más <i class="fas fa-arrow-right"></i></span>
                             </div>
@@ -85,7 +81,7 @@
 
                     <div class="project-card" data-project="virtual-enrollment" role="button" aria-label="Ver detalles del Sistema de Matrícula Virtual">
                         <div class="project-image">
-                            <img src="assets/background_home.png" alt="Virtual Enrollment Project">
+                            <img src="assets/background_h.jpg" alt="Virtual Enrollment Project">
                             <div class="overlay">
                                 <span class="view-more">Ver más <i class="fas fa-arrow-right"></i></span>
                             </div>
@@ -101,9 +97,9 @@
                         </div>
                     </div>
 
-                    <div class="project-card" role="button" aria-label="Ver detalles del proyecto HealthCare App">
+                    <div class="project-card" data-project="healthcare" role="button" aria-label="Ver detalles del proyecto HealthCare App">
                         <div class="project-image">
-                            <img src="assets/background_projectshome.jpg" alt="Project 3">
+                            <img src="assets/background_projects.jpg" alt="HealthCare App Project">
                             <div class="overlay">
                                 <span class="view-more">Ver más <i class="fas fa-arrow-right"></i></span>
                             </div>
@@ -119,9 +115,9 @@
                         </div>
                     </div>
 
-                    <div class="project-card" role="button" aria-label="Ver detalles del proyecto EduPlatform">
+                    <div class="project-card" data-project="eduplatform" role="button" aria-label="Ver detalles del proyecto EduPlatform">
                         <div class="project-image">
-                            <img src="assets/background_home.png" alt="Project 4">
+                            <img src="assets/background_h.jpg" alt="EduPlatform Project">
                             <div class="overlay">
                                 <span class="view-more">Ver más <i class="fas fa-arrow-right"></i></span>
                             </div>
@@ -137,9 +133,9 @@
                         </div>
                     </div>
 
-                    <div class="project-card" role="button" aria-label="Ver detalles del proyecto Smart Factory">
+                    <div class="project-card" data-project="smartfactory" role="button" aria-label="Ver detalles del proyecto Smart Factory">
                         <div class="project-image">
-                            <img src="assets/background_projectshome.jpg" alt="Project 5">
+                            <img src="assets/background_projects.jpg" alt="Smart Factory Project">
                             <div class="overlay">
                                 <span class="view-more">Ver más <i class="fas fa-arrow-right"></i></span>
                             </div>
@@ -155,9 +151,9 @@
                         </div>
                     </div>
 
-                    <div class="project-card" role="button" aria-label="Ver detalles del proyecto Finance Dashboard">
+                    <div class="project-card" data-project="financedashboard" role="button" aria-label="Ver detalles del proyecto Finance Dashboard">
                         <div class="project-image">
-                            <img src="assets/background_home.png" alt="Project 6">
+                            <img src="assets/background_h.jpg" alt="Finance Dashboard Project">
                             <div class="overlay">
                                 <span class="view-more">Ver más <i class="fas fa-arrow-right"></i></span>
                             </div>
@@ -191,7 +187,7 @@
             <div class="project-description" id="section3">
                 <div class="container">
                     <h2 class="section-title">Descripción del Proyecto</h2>
-                    <p>Desarrollamos un sistema integral de matrícula para laboratorios virtuales que permite a los estudiantes inscribirse en prácticas, reservar horarios y acceder a materiales educativos. La plataforma incluye panel de administración para gestionar usuarios, horarios y recursos. Implementada con tecnología web responsive, permite el acceso desde cualquier dispositivo con conexión a internet.</p>
+                    <p id="project-description-text">Desarrollamos un sistema integral de matrícula para laboratorios virtuales que permite a los estudiantes inscribirse en prácticas, reservar horarios y acceder a materiales educativos. La plataforma incluye panel de administración para gestionar usuarios, horarios y recursos. Implementada con tecnología web responsive, permite el acceso desde cualquier dispositivo con conexión a internet.</p>
 
                     <div class="project-features">
                         <div class="feature">
@@ -220,19 +216,19 @@
                     <h3 class="section-subtitle">Imágenes del Proceso</h3>
                     <div class="process-gallery">
                         <div class="gallery-item">
-                            <img src="assets/background_projectshome.jpg" alt="Proceso de desarrollo 1">
+                            <img src="assets/background_projects.jpg" alt="Proceso de desarrollo 1">
                             <div class="gallery-overlay">
                                 <i class="fas fa-search-plus"></i>
                             </div>
                         </div>
                         <div class="gallery-item">
-                            <img src="assets/background_home.png" alt="Proceso de desarrollo 2">
+                            <img src="assets/background_h.jpg" alt="Proceso de desarrollo 2">
                             <div class="gallery-overlay">
                                 <i class="fas fa-search-plus"></i>
                             </div>
                         </div>
                         <div class="gallery-item">
-                            <img src="assets/background_projectshome.jpg" alt="Proceso de desarrollo 3">
+                            <img src="assets/background_projects.jpg" alt="Proceso de desarrollo 3">
                             <div class="gallery-overlay">
                                 <i class="fas fa-search-plus"></i>
                             </div>
@@ -300,15 +296,15 @@
                         <h3 class="section-subtitle">Resultado Final del Proyecto</h3>
                         <div class="gallery-grid">
                             <div class="gallery-final-item">
-                                <img src="assets/background_projectshome.jpg" alt="Resultado final 1">
+                                <img src="assets/background_projects.jpg" alt="Resultado final 1">
                                 <p>Interfaz principal del sistema</p>
                             </div>
                             <div class="gallery-final-item">
-                                <img src="assets/background_home.png" alt="Resultado final 2">
+                                <img src="assets/background_h.jpg" alt="Resultado final 2">
                                 <p>Panel de administración</p>
                             </div>
                             <div class="gallery-final-item">
-                                <img src="assets/background_projectshome.jpg" alt="Resultado final 3">
+                                <img src="assets/background_projects.jpg" alt="Resultado final 3">
                                 <p>Vista móvil responsive</p>
                             </div>
                         </div>
@@ -316,29 +312,32 @@
 
                     <div class="testimonials">
                         <h3 class="section-subtitle">Lo que dicen nuestros clientes</h3>
-                            <div class="testimonial">
-                                <div class="testimonial-content">
-                                    <p>"La plataforma es intuitiva, robusta y escalable. El equipo de JERAD entendió perfectamente nuestras necesidades y entregó más de lo esperado."</p>
-                                </div>
-                                <div class="testimonial-author">
-                                    <img src="assets/jerad_logo.png" alt="Cliente 2">
-                                    <div class="author-info">
-                                        <h4>Carlos Rodríguez</h4>
-                                        <p>Decano de Ingeniería, Instituto Tecnológico</p>
-                                    </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"La plataforma es intuitiva, robusta y escalable. El equipo de JERAD entendió perfectamente nuestras necesidades y entregó más de lo esperado."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="assets/background_projects.jpg" alt="Cliente 2">
+                                <div class="author-info">
+                                    <h4>Carlos Rodríguez</h4>
+                                    <p>Decano de Ingeniería, Instituto Tecnológico</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="cta-section">
-                        <div class="cta-content">
-                            <h3>¿Te gustaría tener un proyecto similar?</h3>
-                            <p>Contáctanos y haremos realidad tu idea con la misma calidad y profesionalismo</p>
-                            <a href="mailto:contacto@jerad.com" class="cta-button">Solicitar cotización <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="cta-image">
-                            <img src="assets/background_projectshome.jpg" alt="Proyecto personalizado">
+                <div class="cta-section">
+                    <div class="container">
+                        <div class="cta-content-wrapper">
+                            <div class="cta-content">
+                                <h3>¿Te gustaría tener un proyecto similar?</h3>
+                                <p>Contáctanos y haremos realidad tu idea con la misma calidad y profesionalismo</p>
+                                <a href="contact.html" class="cta-button">Solicitar cotización <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="cta-image">
+                                <img src="assets/background_projects.jpg" alt="Proyecto personalizado">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -349,5 +348,7 @@
     <div id="footer-placeholder"></div>
 
     <script src="js/projects.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/header.js"></script>
 </body>
 </html>

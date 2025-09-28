@@ -3,33 +3,8 @@
    ======================================== */
 /**
  * @fileoverview Main logic for the services page.
-  * @author 
- 
-
-
-/* ========================================
-   DYNAMIC COMPONENT LOADING
-   ======================================== */
-/**
- * Dynamically loads the header content from an external HTML file.
+ * @author JERAD Team
  */
-fetch('components/header.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Error loading header:', err));
-
-/**
- * Dynamically loads the footer .
- */
-fetch('components/footer.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Error loading footer:', err));
-
 
 /* ========================================
    CLASS: CAROUSEL 3D
@@ -55,7 +30,7 @@ class Carousel3D {
         this.totalImages = this.cards.length;
         if (this.totalImages === 0) return; // Exit if no cards exist
 
-        this.currentIndex = 0; 
+        this.currentIndex = 0;
         this.intervalId = null;
 
         this._createDots();
@@ -100,9 +75,11 @@ class Carousel3D {
             card.style.order = order;
         });
 
-        this.dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === this.currentIndex);
-        });
+        if (this.dots) {
+            this.dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === this.currentIndex);
+            });
+        }
     }
 
     /** Moves to the next card. */
@@ -131,7 +108,7 @@ class Carousel3D {
      * Starts the carousel autoplay.
      * @param {number} delay Delay in milliseconds between transitions.
      */
-    startAutoplay(delay = 15000) {
+    startAutoplay(delay = 5000) { // Aumentado a 5 segundos para mejor UX
         if (this.intervalId) clearInterval(this.intervalId);
         this.intervalId = setInterval(() => this.next(), delay);
     }
@@ -141,16 +118,6 @@ class Carousel3D {
         clearInterval(this.intervalId);
     }
 }
-
-/* Static property for 3D transformation styles */
-Carousel3D.POSITIONS = [
-    { transform: 'translateX(-100%) scale(0.85) rotateY(35deg)', zIndex: 2, opacity: 0.7, filter: 'brightness(0.8)' }, // Left
-    { transform: 'translateX(0) scale(1)', zIndex: 3, opacity: 1, filter: 'brightness(1)' },                           // Center
-    { transform: 'translateX(100%) scale(0.85) rotateY(-35deg)', zIndex: 2, opacity: 0.7, filter: 'brightness(0.8)' }, // Right
-    { transform: 'translateX(200%) scale(0.7) rotateY(-45deg)', zIndex: 1, opacity: 0.3, filter: 'brightness(0.6)' },  // Hidden Right
-    { transform: 'translateX(-200%) scale(0.7) rotateY(45deg)', zIndex: 1, opacity: 0.3, filter: 'brightness(0.6)' }   // Hidden Left
-];
-
 
 /* ========================================
    GLOBAL INITIALIZATION
@@ -182,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    
+
     console.log('3D carousels successfully initialized.');
 });
 
@@ -203,19 +170,18 @@ function handleCTAClick(serviceNumber, button) {
         3: 'Process Automation'
     };
     const serviceName = serviceNames[serviceNumber];
-    
-    button.textContent = '✓ Redirecting...';
+
+    button.textContent = '✓ Redirigiendo...';
     button.style.background = 'linear-gradient(45deg, #4CAF50, #2E7D32)';
-    
+
     sessionStorage.setItem('interestedService', serviceName);
-    
+
     setTimeout(() => {
-        // In a real case, the redirect would happen here.
-        // window.location.href = 'contact.html';
+        // En un caso real, la redirección sucedería aquí.
+        window.location.href = 'contact.html';
         console.log(`Redirecting to contact page for service: ${serviceName}`);
-        // Restore button (demo purpose)
-        button.textContent = 'Send Inquiry';
-        button.style.background = '';
+        
+        // No es necesario restaurar el botón si hay redirección
     }, 800);
 }
 
@@ -231,7 +197,7 @@ function getCurrentVisibleService() {
     document.querySelectorAll('.service-section').forEach(section => {
         const rect = section.getBoundingClientRect();
         const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
-        
+
         if (visibleHeight > maxVisibility) {
             maxVisibility = visibleHeight;
             mostVisibleSection = section.id;
