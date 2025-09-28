@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - JERAD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ========================================
+           HEADER STYLES
+           ======================================== */
+        header {
+            padding: 15px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 55px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: tr    ansparent;
+            transition: background-color 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .logo img {
+            margin-top: 10px;
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        header nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #f39c12;
+        }
+
+        header nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-btn {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ========================================
+           BLOG HERO SECTION (Imagen de portada)
+           ======================================== */
+        .blog-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            padding: 0 50px;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .blog-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            color: #fff;
+        }
+
+        .blog-title {
+            font-size: 4rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: #ddd;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .author, .date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* ========================================
+           MAIN CONTENT CONTAINER
+           ======================================== */
+        .main-container {
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a2332 100%);
+            min-height: 100vh;
+            padding: 4rem 0;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ========================================
+           BLOG CONTENT
+           ======================================== */
+        .blog-content {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            color: #e0e0e0;
+        }
+
+        .blog-content h2 {
+            font-size: 2rem;
+            margin: 2.5rem 0 1.5rem 0;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .blog-content h3 {
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem 0;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .blog-content h4 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+            color: #b0b3b8;
+            font-weight: 500;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+            color: #e0e0e0;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid #00d4ff;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #b0b3b8;
+            background: rgba(0, 212, 255, 0.05);
+            padding: 1rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .blog-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #00d4ff;
+        }
+
+        .blog-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        /* ========================================
+           SOCIAL SHARE
+           ======================================== */
+        .social-share {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: bold;
+        }
+
+        .social-btn.facebook { background: #1877f2; }
+        .social-btn.twitter { background: #1da1f2; }
+        .social-btn.linkedin { background: #0077b5; }
+        .social-btn.email { background: #ea4335; }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        /* ========================================
+           RELATED BLOGS SECTION
+           ======================================== */
+        .related-blogs {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .card-description {
+            color: #a0a0a0;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        @media (max-width: 768px) {
+            .blog-hero {
+                padding: 0 20px;
+            }
+
+            .blog-title {
+                font-size: 2.5rem;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .content-wrapper {
+                padding: 0 1rem;
+            }
+
+            .blog-content {
+                padding: 2rem;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            header nav ul {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+
+            .blog-content {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="JERAD Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blogs.html" class="active">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+            </ul>
+        </nav>
+        <a href="contact.html" class="contact-btn">Contact</a>
+    </header>
+
+    <!-- Blog Hero Section (Imagen de portada con título) -->
+    <section class="blog-hero" id="blog-hero">
+        <div class="blog-hero-content">
+            <h1 id="blog-title" class="blog-title"></h1>
+            <div class="blog-meta">
+                <div class="author">
+                    <span>👤</span>
+                    <span id="blog-author"></span>
+                </div>
+                <div class="date">
+                    <span>📅</span>
+                    <span id="blog-date"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="content-wrapper">
+            <!-- Blog Content -->
+            <article class="blog-content" id="blog-content">
+                <!-- El contenido del blog se cargará aquí dinámicamente -->
+            </article>
+
+            <!-- Social Share -->
+            <div class="social-share">
+                <a href="#" class="social-btn facebook" id="share-facebook">f</a>
+                <a href="#" class="social-btn twitter" id="share-twitter">𝕏</a>
+                <a href="#" class="social-btn linkedin" id="share-linkedin">in</a>
+                <a href="#" class="social-btn email" id="share-email">✉</a>
+            </div>
+
+            <!-- Related Blogs Section -->
+            <section class="related-blogs">
+                <h2 class="section-title">Blogs Relacionados</h2>
+                <div id="blogs-grid" class="blogs-grid">
+                    <div class="empty-state">
+                        <p>Los blogs relacionados se cargarán dinámicamente</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // ========================================
+        // FUNCIONES PARA CARGAR CONTENIDO DINÁMICO
+        // ========================================
+
+        // Función principal para cargar un blog
+        function loadBlogData(blogId) {
+            // Aquí conectarías con tu backend
+            // fetch(`/api/blogs/${blogId}`)
+            //   .then(response => response.json())
+            //   .then(data => {
+            //     // Cargar título y metadatos
+            //     document.getElementById('blog-title').textContent = data.title;
+            //     document.getElementById('blog-author').textContent = data.author;
+            //     document.getElementById('blog-date').textContent = formatDate(data.date);
+            //     
+            //     // Establecer imagen de fondo del hero
+            //     const heroSection = document.getElementById('blog-hero');
+            //     heroSection.style.backgroundImage = `url('${data.featuredImage}')`;
+            //     
+            //     // Cargar contenido del blog
+            //     document.getElementById('blog-content').innerHTML = data.content;
+            //     
+            //     // Actualizar título de la página
+            //     document.title = `${data.title} - JERAD`;
+            //     
+            //     // Cargar blogs relacionados
+            //     loadRelatedBlogs(data.categoryId, blogId);
+            //   })
+            //   .catch(error => {
+            //     console.error('Error loading blog:', error);
+            //     showErrorState();
+            //   });
+        }
+
+        // Función para cargar blogs relacionados
+        function loadRelatedBlogs(categoryId, currentBlogId) {
+            // fetch(`/api/blogs/related?category=${categoryId}&exclude=${currentBlogId}&limit=3`)
+            //   .then(response => response.json())
+            //   .then(data => {
+            //     const grid = document.getElementById('blogs-grid');
+            //     if (data.length === 0) {
+            //       grid.innerHTML = '<div class="empty-state"><p>No hay blogs relacionados disponibles</p></div>';
+            //       return;
+            //     }
+            //     
+            //     grid.innerHTML = data.map(blog => createBlogCard(blog)).join('');
+            //     
+            //     // Añadir event listeners a las cards
+            //     grid.querySelectorAll('.blog-card').forEach(card => {
+            //       card.addEventListener('click', () => {
+            //         const blogId = card.dataset.blogId;
+            //         navigateToBlog(blogId);
+            //       });
+            //     });
+            //   })
+            //   .catch(error => {
+            //     console.error('Error loading related blogs:', error);
+            //   });
+        }
+
+        // Función para crear HTML de una card de blog
+        function createBlogCard(blog) {
+            return `
+                <div class="blog-card" data-blog-id="${blog.id}">
+                    <img src="${blog.thumbnail}" alt="${blog.title}" class="card-image">
+                    <h3 class="card-title">${blog.title}</h3>
+                    <p class="card-description">${blog.excerpt}</p>
+                    <div class="card-meta">
+                        <span>${blog.author}</span>
+                        <span>${formatDate(blog.date)}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Función para navegar a otro blog
+        function navigateToBlog(blogId) {
+            // window.location.href = `blog-detail.html?id=${blogId}`;
+            // O si usas SPA:
+            // loadBlogData(blogId);
+            // history.pushState({blogId}, '', `blog/${blogId}`);
+            console.log('Navegando al blog:', blogId);
+        }
+
+        // Función para formatear fechas
+        function formatDate(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            return new Date(dateString).toLocaleDateString('es-ES', options);
+        }
+
+        // Función para mostrar estado de error
+        function showErrorState() {
+            document.getElementById('blog-title').textContent = 'Blog no encontrado';
+            document.getElementById('blog-content').innerHTML = '<p>Lo sentimos, el blog que buscas no está disponible.</p>';
+        }
+
+        // ========================================
+        // FUNCIONALIDAD DE COMPARTIR EN REDES SOCIALES
+        // ========================================
+        function initializeSocialSharing() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.getElementById('blog-title').textContent || 'Blog - JERAD');
+
+            document.getElementById('share-facebook').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+            });
+
+            document.getElementById('share-twitter').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank', 'width=600,height=400');
+            });
+
+            document.getElementById('share-linkedin').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400');
+            });
+
+            document.getElementById('share-email').addEventListener('click', (e) => {
+                e.preventDefault();
+                const subject = encodeURIComponent(`Te comparto: ${document.getElementById('blog-title').textContent}`);
+                const body = encodeURIComponent(`Te comparto este interesante artículo: ${window.location.href}`);
+                window.location.href = `mailto:?subject=${subject}&body=${body}`;
+            });
+        }
+
+        // ========================================
+        // EFECTOS VISUALES Y INTERACTIVIDAD
+        // ========================================
+        
+        // Efecto de scroll para el header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ========================================
+        // INICIALIZACIÓN
+        // ========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener ID del blog desde la URL o parámetros
+            const urlParams = new URLSearchParams(window.location.search);
+            const blogId = urlParams.get('id') || 'default';
+            
+            // Cargar datos del blog
+            // loadBlogData(blogId); // Descomenta cuando tengas el backend
+            
+            // Inicializar funcionalidad de compartir
+            initializeSocialSharing();
+            
+            console.log('Blog detail page initialized for blog ID:', blogId);
+        });
+    </script>
+</body>
+</html>

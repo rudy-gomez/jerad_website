@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/resources.css">
+</head>
+<body class="resources-page">
+    
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-blogs">
+            <div class="hero-container">
+                <!-- Left Content -->
+                <div class="hero-left-content">
+                    <h1>Explora Nuestros Blogs</h1>
+                    <p>Ideas, tendencias y experiencias en Ingeniería de Sistemas</p>
+                    
+                    <!-- Category Filters -->
+                    <div class="category-filters">
+                        <button class="filter-btn active" onclick="filterBlogs('all')">Programación</button>
+                        <button class="filter-btn" onclick="filterBlogs('tecnologia')">Tecnología</button>
+                        <button class="filter-btn" onclick="filterBlogs('innovacion')">Innovación</button>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Buscar Blogs..." class="search-input" oninput="searchBlogs()">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+
+                <!-- Blog Selection Container -->
+                <div class="hero-blog-selection">
+                    <div class="selection-header">
+                        <div class="title-wrapper">
+                            <i class="fas fa-fire fire-icon"></i>
+                            <h2>Nuestras selecciones</h2>
+                        </div>
+                        <p>Explora esta muestra de publicaciones</p>
+                    </div>
+
+                    <!-- Blog Cards Container -->
+                    <div class="blog-cards-container">
+                        <button class="nav-btn" id="prevBtn" onclick="prevBlog()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div class="blog-cards-wrapper" id="blogCardsWrapper">
+                            <div class="blog-cards-track" id="blogCardsTrack">
+                                <!-- Blog Cards -->
+                                <div class="blog-card-rect" onclick="openBlog(1)">
+                                    <div class="blog-image">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="blog-info">
+                                        <h3>El Futuro de la Programación</h3>
+                                        <p class="blog-date">02 Sept 2025</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="blog-card-rect" onclick="openBlog(2)">
+                                    <div class="blog-image">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <div class="blog-info">
+                                        <h3>Innovaciones IA 2025</h3>
+                                        <p class="blog-date">02 Sept 2025</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="blog-card-rect" onclick="openBlog(3)">
+                                    <div class="blog-image">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="blog-info">
+                                        <h3>Ciberseguridad Avanzada</h3>
+                                        <p class="blog-date">01 Sept 2025</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="blog-card-rect" onclick="openBlog(4)">
+                                    <div class="blog-image">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <div class="blog-info">
+                                        <h3>Desarrollo Web Moderno</h3>
+                                        <p class="blog-date">31 Aug 2025</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="blog-card-rect" onclick="openBlog(5)">
+                                    <div class="blog-image">
+                                        <i class="fas fa-cloud"></i>
+                                    </div>
+                                    <div class="blog-info">
+                                        <h3>Cloud Computing 2025</h3>
+                                        <p class="blog-date">30 Aug 2025</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="blog-card-rect" onclick="openBlog(6)">
+                                    <div class="blog-image">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="blog-info">
+                                        <h3>Apps Móviles Futuras</h3>
+                                        <p class="blog-date">29 Aug 2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="nav-btn" id="nextBtn" onclick="nextBlog()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/resources.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/layout.js"></script>
+</body>
+</html>

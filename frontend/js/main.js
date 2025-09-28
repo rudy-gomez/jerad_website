@@ -1,24 +1,30 @@
-// HTML injection of header and footer
-fetch('components/header.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Error al cargar header:', err));
+function toggleFAQ(element) {
+    const faqItem = element.closest('.faq-item');
+    const answer = faqItem.querySelector('.faq-answer');
+    
+    // Toggle active class
+    faqItem.classList.toggle('active');
+    
+    // Toggle answer visibility
+    answer.classList.toggle('show');
+    
+    // Close other open FAQs
+    const allFaqItems = document.querySelectorAll('.faq-item');
+    allFaqItems.forEach(item => {
+        if (item !== faqItem) {
+            item.classList.remove('active');
+            item.querySelector('.faq-answer').classList.remove('show');
+        }
+    });
+}
 
-fetch('components/footer.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Error al cargar footer:', err));
+const current = window.location.pathname.split("/").pop();
+const links = document.querySelectorAll('header nav ul li a');
 
-//Header scroll effect
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
+links.forEach(link => {
+    if(link.getAttribute('href') === current) {
+        link.classList.add('active');
     } else {
-        header.classList.remove('scrolled');
+        link.classList.remove('active');
     }
 });
