@@ -146,6 +146,10 @@ body {
 .search-btn:hover {
     transform: translateY(-50%) scale(1.1);
 }
+.blog-link {
+    text-decoration: none;
+    color: inherit;
+}
 
 /* RIGHT CONTENT - BLOG SELECTION */
 .hero-blog-selection {
